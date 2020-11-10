@@ -9,11 +9,16 @@ import { MediaMatcher } from '@angular/cdk/layout';
 export class NavbarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
+  navState: boolean = true;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  iconChange(): void{
+    this.navState = !this.navState;
   }
 
   ngOnDestroy(): void {
