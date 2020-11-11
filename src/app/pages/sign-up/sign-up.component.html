@@ -1,1 +1,54 @@
-<p>sign-up works!</p>
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="m-3 p-4">
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+            <h3 class="text-center">Sign Up</h3>
+            <div fxLayout="column" fxLayoutAlign="center center" fxFill>
+                <!-- email field -->
+                <input fxFill type="email" placeholder="Enter Email" formControlName="email" required>
+                <div class="error-message" *ngIf="signUpForm.get('email').hasError('email')">email must include @</div>
+                <div class="error-message"
+                    *ngIf="signUpForm.get('email').hasError('required') &&signUpForm.get('email').touched">Email is
+                    required</div>
+
+                <!-- first name field -->
+                <input fxFill type="text" placeholder="Enter First Name" formControlName="firstName" required>
+                <div class="error-message"
+                    *ngIf="signUpForm.get('firstName').hasError('required') &&signUpForm.get('firstName').touched">First
+                    Name is required</div>
+
+                <!-- second name field -->
+                <input fxFill type="text" placeholder="Enter Second Name" formControlName="secondName" required>
+                <div class="error-message"
+                    *ngIf="signUpForm.get('secondName').hasError('required') &&signUpForm.get('secondName').touched">
+                    Second Name is required</div>
+
+                <!-- password field -->
+                <input fxFill type="password" placeholder="Enter Password" formControlName="password" required>
+                <div class="error-message"
+                    *ngIf="signUpForm.get('password').hasError('required') &&signUpForm.get('password').touched">
+                    Password is required</div>
+
+                <!-- confirm password field -->
+                <input fxFill type="password" placeholder="Confirm Password" formControlName="confirmPassword" required>
+                <div class="error-message"
+                    *ngIf="signUpForm.get('confirmPassword').hasError('required') &&signUpForm.get('confirmPassword').touched">
+                    Password is required</div>
+
+
+                <button [disabled]="!signUpForm.valid" fxFill class="btn btn-outline-success" type="submit"
+                    fxLayout="row wrap" fxLayoutAlign="center center">
+                    <mat-icon>mail</mat-icon> <span>Sign Up in with Mail</span>
+                </button>
+                <span> Or </span>
+                <button [disabled]="!signUpForm.valid" fxFill class="btn btn-outline-info" type="submit"
+                    fxLayout="row wrap" fxLayoutAlign="center center"> <img class="gmail-icon"
+                        src="../../../assets/gmail.png"> <span> Sign Up with Google</span></button>
+                <label fxLayout="row wrap" fxLayoutAlign="space-between">
+                    <span><a [routerLink]="['/log-in']" routerLinkActive="router-link-active">Have an account? Log
+                            In</a></span>
+                </label>
+            </div>
+        </form>
+    </mat-card>
+
+</div>

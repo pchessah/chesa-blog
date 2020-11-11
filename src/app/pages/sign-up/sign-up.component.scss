@@ -1,0 +1,65 @@
+
+  mat-card{
+    width: 500px;
+  }
+  /* Full-width inputs */
+  input[type=email], input[type=password], input[type=text] {
+    // width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+  }
+  
+  /* Set a style for all buttons */
+  button {
+    padding: 10px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    // width: 50%;
+    border: 1px solid #ccc;
+  }
+  
+  /* Add a hover effect for buttons */
+  button:hover {
+    opacity: 0.8;
+  }
+
+  .gmail-icon{
+    height: 18px;
+    width: 18px;
+  }
+
+  mat-icon, .gmail-icon{
+    margin: 4px;
+  }
+
+
+  .error-message{
+    color: red;
+    font-weight: 300;
+    font-size: 8px;
+    text-align: left !important;
+  }
+  
+  
+  
+  /* The "Forgot password" text */
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+
+  
+  /* Change styles for span and cancel button on extra small screens */
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+    .cancelbtn {
+      width: 100%;
+    }
+  }

@@ -1,20 +1,35 @@
-<mat-card class="m-5">
-  <form [formGroup]="logInForm" (ngSubmit)="logIn()" >
-    <h3 class="text-center">Log In</h3>
-    <div fxLayout="column" fxLayoutAlign="center center" fxFill>
-      <input fxFill type="email" placeholder="Enter Email" formControlName="email" required>
-      <div class="error-message" *ngIf="logInForm.get('email').hasError('email')">email must include @</div>
-      <div class="error-message" *ngIf="logInForm.get('email').hasError('required') && logInForm.get('email').touched">Email is required</div>
-      <input fxFill type="password" placeholder="Enter Password" formControlName="password" required>
-      <div class="error-message" *ngIf="logInForm.get('password').hasError('required') && logInForm.get('password').touched">Password is required</div>
-      <button [disabled]="!logInForm.valid" fxFill class="btn btn-outline-success" type="submit" fxLayout="row wrap" fxLayoutAlign="center center">
-        <mat-icon>mail</mat-icon> <span>Log in with Mail</span>
-      </button>
-      <button [disabled]="!logInForm.valid" fxFill class="btn btn-outline-info" type="submit" fxLayout="row wrap" fxLayoutAlign="center center"> <img
-          class="gmail-icon" src="../../../assets/gmail.png"> <span> Log In with Google</span></button>
-      <label fxLayout="row wrap" fxLayoutAlign="space-between">
-        <span><a [routerLink]="['/sign-up']" routerLinkActive="router-link-active">No Account? Sign Up</a></span>
-      </label>
-    </div>
-  </form>
-</mat-card>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="m-3 p-4">
+    <form [formGroup]="logInForm" (ngSubmit)="logIn()">
+      <h3 class="text-center">Log In</h3>
+      <div fxLayout="column" fxLayoutAlign="center center" fxFill>
+        <!-- email field -->
+        <input fxFill type="email" placeholder="Enter Email" formControlName="email" required>
+        <div class="error-message" *ngIf="logInForm.get('email').hasError('email')">email must include @</div>
+        <div class="error-message"
+          *ngIf="logInForm.get('email').hasError('required') && logInForm.get('email').touched">Email is required</div>
+
+        <!-- password field -->
+        <input fxFill type="password" placeholder="Enter Password" formControlName="password" required>
+        <div class="error-message"
+          *ngIf="logInForm.get('password').hasError('required') && logInForm.get('password').touched">Password is
+          required</div>
+
+        <!-- log in with  mail -->
+        <button [disabled]="!logInForm.valid" fxFill class="btn btn-outline-success" type="submit" fxLayout="row wrap"
+          fxLayoutAlign="center center">
+          <mat-icon>mail</mat-icon> <span>Log in with Mail</span>
+        </button>
+
+        <!-- log in with google -->
+        <button [disabled]="!logInForm.valid" fxFill class="btn btn-outline-info" type="submit" fxLayout="row wrap"
+          fxLayoutAlign="center center"> <img class="gmail-icon" src="../../../assets/gmail.png"> <span> Log In with
+            Google</span></button>
+
+        <label fxLayout="row wrap" fxLayoutAlign="space-between">
+          <span><a [routerLink]="['/sign-up']" routerLinkActive="router-link-active">No Account? Sign Up</a></span>
+        </label>
+      </div>
+    </form>
+  </mat-card>
+</div>
