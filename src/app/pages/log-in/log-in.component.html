@@ -1,14 +1,20 @@
 <mat-card class="m-5">
-  <form>
+  <form [formGroup]="logInForm" (ngSubmit)="logIn()" >
     <h3 class="text-center">Log In</h3>
     <div fxLayout="column" fxLayoutAlign="center center" fxFill>
-      <input  fxFill type="text" placeholder="Enter Username" name="uname" required>
-      <input  fxFill type="password" placeholder="Enter Password" name="psw" required>  
-      <button  fxFill class="btn btn-outline-success" type="submit">Log in with Mail</button>
-      <button  fxFill class="btn btn-outline-info" type="submit">Log In with Google</button>
+      <input fxFill type="email" placeholder="Enter Email" formControlName="email" required>
+      <div class="error-message" *ngIf="logInForm.get('email').hasError('email')">email must include @</div>
+      <div class="error-message" *ngIf="logInForm.get('email').hasError('required') && logInForm.get('email').touched">Email is required</div>
+      <input fxFill type="password" placeholder="Enter Password" formControlName="password" required>
+      <div class="error-message" *ngIf="logInForm.get('password').hasError('required') && logInForm.get('password').touched">Password is required</div>
+      <button [disabled]="!logInForm.valid" fxFill class="btn btn-outline-success" type="submit" fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-icon>mail</mat-icon> <span>Log in with Mail</span>
+      </button>
+      <button [disabled]="!logInForm.valid" fxFill class="btn btn-outline-info" type="submit" fxLayout="row wrap" fxLayoutAlign="center center"> <img
+          class="gmail-icon" src="../../../assets/gmail.png"> <span> Log In with Google</span></button>
       <label fxLayout="row wrap" fxLayoutAlign="space-between">
-        <span><a [routerLink]="['/sign-up']" routerLinkActive="router-link-active" >No Account? Sign Up</a></span>      
+        <span><a [routerLink]="['/sign-up']" routerLinkActive="router-link-active">No Account? Sign Up</a></span>
       </label>
-    </div>  
+    </div>
   </form>
 </mat-card>
