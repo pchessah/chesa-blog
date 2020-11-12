@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "chesa-blog"
+  },
+  "targets": {
+    "chesa-blog": {
+      "hosting": {
+        "chesa-blog": [
+          "chesa-blog"
+        ]
+      }
+    }
   }
 }

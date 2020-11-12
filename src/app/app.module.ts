@@ -2,14 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { AppFirebaseModule } from './libs/modules/app-firebase/app-firebase.module';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatCardModule} from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 
 
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AngularFireModule } from '@angular/fire';
 
 const MAT_MODULES = [
   MatSidenavModule,
@@ -38,8 +40,9 @@ const MAT_MODULES = [
     SignUpComponent,
     NotFoundComponent
   ],
-  imports: [    
+  imports: [
     BrowserModule,
+    AngularFireModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
