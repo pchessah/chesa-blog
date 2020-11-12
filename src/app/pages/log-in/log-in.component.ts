@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/libs/services/auth_service/auth.service';
 
 @Component({
   selector: 'app-log-in',
@@ -13,14 +14,16 @@ export class LogInComponent implements OnInit {
     password: ["", Validators.required]
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private authService: AuthService) { }
 
 
   ngOnInit(): void {
   }
 
   logIn(): void{
-    console.log(this.logInForm.value);
+   const email = (this.logInForm.value.email);
+   const password = (this.logInForm.value.password);
+   this.authService.signIn(email,password);
   }
 
 }

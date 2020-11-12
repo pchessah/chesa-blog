@@ -13,6 +13,7 @@ export class AuthService {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         window.alert("You have been registered");
+        this.router.navigateByUrl("/log-in")
         console.log(result.user);        
       }).catch((error) => {
         window.alert(error.message)
