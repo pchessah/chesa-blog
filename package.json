@@ -26,6 +26,8 @@
     "angularfire": "^2.3.0",
     "bootstrap": "^4.5.3",
     "firebase": "^8.0.1",
+    "firebaseui": "^4.7.1",
+    "ngx-toastr": "^13.1.0",
     "rxjs": "^6.6.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

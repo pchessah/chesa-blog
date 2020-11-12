@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppFirebaseModule } from './libs/modules/app-firebase/app-firebase.module';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -43,6 +44,8 @@ const MAT_MODULES = [
   imports: [
     BrowserModule,
     AngularFireModule,
+    AppFirebaseModule,
+    AngularFireDatabaseModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
