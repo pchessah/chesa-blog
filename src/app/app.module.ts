@@ -6,6 +6,7 @@ import { AppFirebaseModule } from './libs/modules/app-firebase/app-firebase.modu
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -43,6 +44,7 @@ const MAT_MODULES = [
   ],
   imports: [
     BrowserModule,
+    AngularFireAuthModule,
     AngularFireModule,
     AppFirebaseModule,
     AngularFireDatabaseModule,
