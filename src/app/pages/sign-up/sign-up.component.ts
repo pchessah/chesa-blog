@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms"
 import { IUsers } from 'src/app/libs/interfaces/iusers';
 import { AuthService } from 'src/app/libs/services/auth_service/auth.service';
 import { UserService } from 'src/app/libs/services/user-service/user.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-sign-up',
@@ -30,11 +31,13 @@ export class SignUpComponent implements OnInit {
     const password = this.signUpForm.value.password;
     const firstName = this.signUpForm.value.firstName;
     const secondName = this.signUpForm.value.secondName;
+    const uid = uuidv4()
     
     this.user = {
       firstName: firstName,
       secondName: secondName,
-      email: email
+      email: email,
+      uid: uid
     }
 
     this.authService.signUp(email, password);
