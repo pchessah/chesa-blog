@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="m-3 p-4">
-    <form [formGroup]="logInForm" (ngSubmit)="logIn()">
+    <form [formGroup]="logInForm">
       <h3 class="text-center">Log In</h3>
       <div fxLayout="column" fxLayoutAlign="center center" fxFill>
         <!-- email field -->
@@ -16,13 +16,13 @@
           required</div>
 
         <!-- log in with  mail -->
-        <button [disabled]="!logInForm.valid" fxFill class="btn btn-outline-success" type="submit" fxLayout="row wrap"
+        <button (click)="logInViaMail()" [disabled]="!logInForm.valid" fxFill class="btn btn-outline-success" type="submit" fxLayout="row wrap"
           fxLayoutAlign="center center">
           <mat-icon>mail</mat-icon> <span>Log in with Mail</span>
         </button>
 
         <!-- log in with google -->
-        <button [disabled]="!logInForm.valid" fxFill class="btn btn-outline-info" type="submit" fxLayout="row wrap"
+        <button (click)="logInViaGoogle()" [disabled]="!logInForm.valid" fxFill class="btn btn-outline-info" type="submit" fxLayout="row wrap"
           fxLayoutAlign="center center"> <img class="gmail-icon" src="../../../assets/gmail.png"> <span> Log In with
             Google</span></button>
 

@@ -13,6 +13,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 import { AppComponent } from './app.component';
@@ -22,13 +24,16 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const MAT_MODULES = [
   MatSidenavModule,
   MatListModule,
   MatIconModule,
   MatToolbarModule,
-  MatCardModule
+  MatCardModule,
+  MatSnackBarModule,
+  MatMenuModule
 ]
 
 @NgModule({
@@ -39,7 +44,8 @@ const MAT_MODULES = [
     ProfileComponent,
     LogInComponent,
     SignUpComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

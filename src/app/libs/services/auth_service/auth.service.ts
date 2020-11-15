@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from '@angular/router';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { IUsers } from '../../interfaces/iusers';
 import { auth } from 'firebase/app';
-import { User } from "firebase"
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  user$: Observable<IUsers>;
+  private user: BehaviorSubject<
+    Observable<firebase.User>
+  > = new BehaviorSubject<Observable<firebase.User>>(null);
+  user$ = this.user
+    .asObservable()
+    .pipe(switchMap((user: Observable<firebase.User>) => user));
 
   constructor(private afAuth: AngularFireAuth,
-    private router: Router,
-    private afs: AngularFirestore,) { }
+    private router: Router,) {
+    this.user.next(this.afAuth.authState)
+  }
 
   signUp(email, password) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
@@ -31,12 +34,20 @@ export class AuthService {
 
   signIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then(() => {
         window.alert("Successfuly logged in!");
         this.router.navigateByUrl("/");
       }).catch((error) => {
         window.alert(error.message)
       })
+  }
+
+  loginViaGoogle(): Observable<auth.UserCredential> {
+    return from(this.afAuth.signInWithPopup(new auth.GoogleAuthProvider()));
+  }
+
+  logout(): Observable<void> {
+    return from(this.afAuth.signOut());
   }
 
 

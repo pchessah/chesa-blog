@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { catchError, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',

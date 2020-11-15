@@ -14,11 +14,16 @@
             <mat-nav-list>
                 <a mat-list-item routerLink="/"><i class="fas fa-home"></i>Home</a>
                 <a mat-list-item routerLink="/all-entries"><i class="fas fa-rss"></i>Entries</a>
-                <a mat-list-item routerLink="/profile"><i class="fas fa-user-circle"></i>Your Profile</a>
+                <a mat-list-item mat-button [matMenuTriggerFor]="menu"><i class="fas fa-user-circle"></i>Logged In user</a>
+                <mat-menu #menu="matMenu" xPosition="after">
+                    <button mat-menu-item> <a mat-list-item routerLink="/profile">Your Profile</a></button>
+                    <button mat-menu-item>Log out</button>
+                </mat-menu>               
                 <a mat-list-item routerLink="/log-in"><i class="fas fa-sign-in-alt"></i>Log In/ Sign Up</a>
             </mat-nav-list>
         </mat-sidenav>
 
+        <!-- All the main content -->
         <mat-sidenav-content>
             <router-outlet></router-outlet>
         </mat-sidenav-content>
