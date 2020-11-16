@@ -16,7 +16,9 @@ export class LogInComponent implements OnInit {
   logInForm = this.fb.group({
     email: ["", [Validators.required, Validators.email]],
     password: ["", Validators.required]
-  })
+  });
+
+  user$: Observable<firebase.User> = this.authService.user$;
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,

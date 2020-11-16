@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { auth } from 'firebase/app';
+import firebase from 'firebase';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -17,14 +19,16 @@ export class AuthService {
     .pipe(switchMap((user: Observable<firebase.User>) => user));
 
   constructor(private afAuth: AngularFireAuth,
-    private router: Router,) {
+              private router: Router,
+              private snackBar: MatSnackBar) {
     this.user.next(this.afAuth.authState)
   }
 
-  signUp(email, password) {
+  signUp(email, password, displayName) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         window.alert("You have been registered");
+        this.updateUserName(displayName)
         this.router.navigateByUrl("/log-in")
         console.log(result.user);
       }).catch((error) => {
@@ -32,10 +36,16 @@ export class AuthService {
       })
   }
 
+  updateUserName( displayName ){
+    let user = firebase.auth().currentUser;
+    user.updateProfile({
+      displayName: displayName,
+    })
+  }
+
   signIn(email, password) {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then(() => {
-        window.alert("Successfuly logged in!");
         this.router.navigateByUrl("/");
       }).catch((error) => {
         window.alert(error.message)

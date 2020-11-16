@@ -31,7 +31,8 @@ export class SignUpComponent implements OnInit {
     const password = this.signUpForm.value.password;
     const firstName = this.signUpForm.value.firstName;
     const secondName = this.signUpForm.value.secondName;
-    const uid = uuidv4()
+    const uid = uuidv4();
+    const displayName = `${firstName} ${secondName}`
     
     this.user = {
       firstName: firstName,
@@ -40,7 +41,7 @@ export class SignUpComponent implements OnInit {
       uid: uid
     }
 
-    this.authService.signUp(email, password);
+    this.authService.signUp(email, password, displayName);
     this.userService.addNewUser( this.user );
   }
 }
