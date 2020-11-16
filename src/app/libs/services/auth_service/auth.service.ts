@@ -27,10 +27,11 @@ export class AuthService {
   signUp(email, password, displayName) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        window.alert("You have been registered");
+        this.snackBar.open(`Succesfully signed up`, 'Close', {
+          duration: 4000,
+        })
         this.updateUserName(displayName)
         this.router.navigateByUrl("/log-in")
-        console.log(result.user);
       }).catch((error) => {
         window.alert(error.message)
       })

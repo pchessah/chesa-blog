@@ -14,7 +14,7 @@
                 <button class="btn btn-success m-2" type="submit" [disabled]="!newBlogPostForm.valid">
                     Save new post
                 </button>
-                <button class="btn btn-danger m-2">
+                <button (click)="cancel()" class="btn btn-danger m-2">
                     Cancel
                 </button>
             </div>
