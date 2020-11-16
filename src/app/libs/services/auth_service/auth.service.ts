@@ -47,8 +47,13 @@ export class AuthService {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then(() => {
         this.router.navigateByUrl("/");
+        this.snackBar.open(`Succesfully logged in`, 'Close', {
+          duration: 4000,
+        })
       }).catch((error) => {
-        window.alert(error.message)
+        this.snackBar.open(`${error.message}`, 'Close', {
+          duration: 4000,
+        })
       })
   }
 

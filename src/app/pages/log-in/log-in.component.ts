@@ -31,12 +31,9 @@ export class LogInComponent implements OnInit {
 
   logInViaMail(): void {
     const email = (this.logInForm.value.email);
-    const password = (this.logInForm.value.password);
-    this.snackBar.open(`Succesfully logged in`, 'Close', {
-      duration: 4000,
-    })
+    const password = (this.logInForm.value.password);    
     this.authService.signIn(email, password);
-    this.router.navigateByUrl("/")
+
   }
 
   logInViaGoogle(): void {
