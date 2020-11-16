@@ -36,6 +36,7 @@ export class LogInComponent implements OnInit {
       duration: 4000,
     })
     this.authService.signIn(email, password);
+    this.router.navigateByUrl("/")
   }
 
   logInViaGoogle(): void {
@@ -47,20 +48,14 @@ export class LogInComponent implements OnInit {
           });
           return EMPTY;
         }))
-      .subscribe((response) => response && this.snackBar.open(`Succesfully logged in`, 'Close', {
-        duration: 4000,
-      }));
+      .subscribe((response) =>{
+        response && this.snackBar.open(`Succesfully logged in`, 'Close', {
+          duration: 4000,       
+        })
+        this.router.navigateByUrl("/");
+      } );
   }
 
-  logout() {
-    this.authService.logout()
-      .pipe(take(1))
-      .subscribe((response) => {
-        this.router.navigateByUrl("/")
-        this.snackBar.open('Goodbye! you have been logged out!', 'Close', {
-          duration: 4000,
-        });
-      });
-  }
+ 
 
 }

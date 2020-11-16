@@ -40,7 +40,7 @@
                     <mat-icon>mail</mat-icon> <span>Sign Up in with Mail</span>
                 </button>
                 <span> Or </span>
-                <button [disabled]="!signUpForm.valid" fxFill class="btn btn-outline-info" type="submit"
+                <button (click)="signUpWithGoogle()" fxFill class="btn btn-outline-info" type="submit"
                     fxLayout="row wrap" fxLayoutAlign="center center"> <img class="gmail-icon"
                         src="../../../assets/gmail.png"> <span> Sign Up with Google</span></button>
                 <label fxLayout="row wrap" fxLayoutAlign="space-between">

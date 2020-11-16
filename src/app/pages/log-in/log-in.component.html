@@ -20,9 +20,9 @@
           fxLayoutAlign="center center">
           <mat-icon>mail</mat-icon> <span>Log in with Mail</span>
         </button>
-
+        <span> Or </span>
         <!-- log in with google -->
-        <button (click)="logInViaGoogle()" [disabled]="!logInForm.valid" fxFill class="btn btn-outline-info" type="submit" fxLayout="row wrap"
+        <button (click)="logInViaGoogle()" fxFill class="btn btn-outline-info" type="submit" fxLayout="row wrap"
           fxLayoutAlign="center center"> <img class="gmail-icon" src="../../../assets/gmail.png"> <span> Log In with
             Google</span></button>
 
