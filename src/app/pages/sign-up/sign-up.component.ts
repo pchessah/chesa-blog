@@ -42,7 +42,7 @@ export class SignUpComponent implements OnInit {
     }
 
     this.authService.signUp(email, password, displayName);
-    this.userService.addNewUser( this.user );
+    //this.userService.addNewUser( this.user );
   }
 
   signUpWithGoogle(): void{

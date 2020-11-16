@@ -1,0 +1,24 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="p-2">
+    <h4>New Post</h4>
+    <div class="card m-4 p-2" fxLayout="row" fxLayoutAlign="center center" fxFill>
+        <form (ngSubmit)="saveNewPost()" [formGroup]="newBlogPostForm" fxLayout="column" fxLayoutAlign="center center" fxFill>
+            <div class="p-2" fxLayout="column" fxLayoutAlign="center center" fxFill>
+                <label>Title: </label>
+                <input formControlName="title" type="text" />
+            </div>
+            <div class="p-2 m-1" fxLayout="column" fxLayoutAlign="center center" fxFill>
+                <label>Content: </label>
+                <textarea formControlName="content"></textarea>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" >
+                <button class="btn btn-success m-2" type="submit" [disabled]="!newBlogPostForm.valid">
+                    Save new post
+                </button>
+                <button class="btn btn-danger m-2">
+                    Cancel
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
