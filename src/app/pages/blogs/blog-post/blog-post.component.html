@@ -1,1 +1,8 @@
-{{blogPost | json}}
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div class="title"> <h3> {{blogPost?.title}} </h3>  </div>
+    <div> by {{blogPost?.author}} </div>
+    <div class="card-body m-5 p-5">
+        {{blogPost?.content}}
+    </div>
+
+</div>
