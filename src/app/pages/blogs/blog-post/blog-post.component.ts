@@ -10,7 +10,7 @@ import { BlogsService } from 'src/app/libs/services/blog-service/blogs.service';
 })
 export class BlogPostComponent implements OnInit {
 
-  blogPost: IBlogPost;
+  blogPost;
 
   constructor(private router: Router,
     private blogService: BlogsService,
@@ -21,11 +21,12 @@ export class BlogPostComponent implements OnInit {
   }
 
   getBlogPost(): void {
-    const id = this.route.snapshot.paramMap.get("id");
-    this.blogService.getSinglePost(id).subscribe((blogPost: IBlogPost) => {
-      this.blogPost = blogPost;
-      console.log(id);
-    })
+    const id = this.route.snapshot.paramMap.get("id");    
+    (async () => {
+      return (await this.blogService.getSinglePost(id)).forEach(doc => {
+        this.blogPost = (doc.data());
+      })
+    })()
   }
 
 }

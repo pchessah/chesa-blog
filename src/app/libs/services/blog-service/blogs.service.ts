@@ -38,10 +38,10 @@ export class BlogsService {
   }
 
   //GET SINGLE BLOG POST VIA ID
+  async getSinglePost(id: string) {
+   const blogPostRef = this.firestore.firestore.collection("blog-posts");
+   const snapshot = await blogPostRef.where("uid", "==", id).get();
+   return snapshot
 
-  getSinglePost(id: string) {
-    return this.firestore.collection("blog-posts").doc(id).valueChanges().pipe(
-      catchError(this.handleError)
-    )
   }
 }
