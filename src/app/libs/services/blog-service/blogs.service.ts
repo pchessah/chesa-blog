@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { IBlogPost } from '../../interfaces/iblogposts';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { IBlogPost } from '../../interfaces/iblogposts';
 })
 export class BlogsService {
 
-  constructor( private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { }
 
   //CHECK ERRORS WITH HTTP CALLS
   handleError(err: HttpErrorResponse) {
@@ -27,12 +28,20 @@ export class BlogsService {
 
 
   //ADD NEW BLOG POST TO FIREBASE
-  addNewBlogPost(post: IBlogPost ) {
+  addNewBlogPost(post: IBlogPost) {
     return this.firestore.collection("blog-posts").add(post);
   }
 
   //GET ALL BLOG POSTS
-  getAllPosts(): AngularFirestoreCollection<IBlogPost>{
+  getAllPosts(): AngularFirestoreCollection<IBlogPost> {
     return this.firestore.collection("blog-posts")
+  }
+
+  //GET SINGLE BLOG POST VIA ID
+
+  getSinglePost(id: string) {
+    return this.firestore.collection("blog-posts").doc(id).valueChanges().pipe(
+      catchError(this.handleError)
+    )
   }
 }

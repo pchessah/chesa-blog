@@ -8,6 +8,7 @@ import { LogInComponent } from './pages/log-in/log-in.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { NewBlogPostComponent } from './pages/blogs/new-blog-post/new-blog-post.component';
+import { BlogPostComponent } from './pages/blogs/blog-post/blog-post.component';
 
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["home"]);
@@ -23,6 +24,7 @@ const routes: Routes = [
     path: "new-blogpost", component: NewBlogPostComponent, canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
+  { path: "blogpost/:id", component: BlogPostComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", component: NotFoundComponent }
 ];

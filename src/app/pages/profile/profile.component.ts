@@ -24,9 +24,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   constructor(private blogService: BlogsService) {this.blogPosts = this.blogService.getAllPosts().valueChanges()
     this.blogPosts.subscribe(blogPosts => {
       this.blogPostsArray = blogPosts;
-      this.dataSource = this.blogPostsArray;
-      console.log(this.dataSource);
-     
+      this.dataSource = this.blogPostsArray;     
     }) }
 
   ngOnInit(): void {

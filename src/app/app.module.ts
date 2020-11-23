@@ -27,6 +27,7 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { NewBlogPostComponent } from './pages/blogs/new-blog-post/new-blog-post.component';
+import { BlogPostComponent } from './pages/blogs/blog-post/blog-post.component';
 
 const MAT_MODULES = [
   MatSidenavModule,
@@ -49,7 +50,8 @@ const MAT_MODULES = [
     SignUpComponent,
     NotFoundComponent,
     UserProfileComponent,
-    NewBlogPostComponent
+    NewBlogPostComponent,
+    BlogPostComponent
   ],
   imports: [
     BrowserModule,
