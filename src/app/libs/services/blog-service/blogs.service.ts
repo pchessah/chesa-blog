@@ -4,13 +4,20 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IBlogPost } from '../../interfaces/iblogposts';
+import {Location} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogsService {
+  
+  blogPostRef = this.firestore.firestore.collection("blog-posts");
+  constructor(private firestore: AngularFirestore, private location: Location) { }
 
-  constructor(private firestore: AngularFirestore) { }
+  //GO BACK TO LAST SCREEN
+  goBack(): void{
+    this.location.back();
+  }
 
   //CHECK ERRORS WITH HTTP CALLS
   handleError(err: HttpErrorResponse) {
@@ -38,10 +45,14 @@ export class BlogsService {
   }
 
   //GET SINGLE BLOG POST VIA ID
-  async getSinglePost(id: string) {
-   const blogPostRef = this.firestore.firestore.collection("blog-posts");
-   const snapshot = await blogPostRef.where("uid", "==", id).get();
-   return snapshot
-
+  async getSinglePost(id: string) {  
+   const snapshot = await this.blogPostRef.where("uid", "==", id).get();
+   return snapshot;
   }
+
+  //EDIT BLOGPOST
+  updateSinglePost(id: string, data: any){
+    return this.blogPostRef.doc(id).update(data);
+  }
+
 }

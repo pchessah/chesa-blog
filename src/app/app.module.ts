@@ -28,6 +28,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { NewBlogPostComponent } from './pages/blogs/new-blog-post/new-blog-post.component';
 import { BlogPostComponent } from './pages/blogs/blog-post/blog-post.component';
+import { EditBlogPostComponent } from './pages/blogs/edit-blog-post/edit-blog-post.component';
 
 const MAT_MODULES = [
   MatSidenavModule,
@@ -51,7 +52,8 @@ const MAT_MODULES = [
     NotFoundComponent,
     UserProfileComponent,
     NewBlogPostComponent,
-    BlogPostComponent
+    BlogPostComponent,
+    EditBlogPostComponent
   ],
   imports: [
     BrowserModule,

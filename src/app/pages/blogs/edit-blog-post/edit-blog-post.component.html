@@ -1,19 +1,19 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="p-2">
-    <h4>New Post</h4>
+    <h4>Edit:  {{blogPost?.title}}</h4>
     <div class="card m-4 p-2" fxLayout="row" fxLayoutAlign="center center" fxFill>
-        <form (ngSubmit)="saveNewPost()" [formGroup]="newBlogPostForm" fxLayout="column" fxLayoutAlign="center center"
+        <form  [formGroup]="editBlogPostForm" fxLayout="column" fxLayoutAlign="center center"
             fxFill>
             <div class="p-2" fxLayout="column" fxLayoutAlign="center center" fxFill>
                 <label>Title: </label>
-                <input formControlName="title" type="text" />
+                <input formControlName="title" [value]="blogPost?.title" type="text" />
             </div>
             <div class="p-2 m-1" fxLayout="column" fxLayoutAlign="center center" fxFill>
                 <label>Content: </label>
-                <textarea formControlName="content"></textarea>
+                <textarea formControlName="content" [value]="blogPost?.content"></textarea>
             </div>
             <div fxLayout="row" fxLayoutAlign="space-between center">
-                <button class="btn btn-success m-2" type="submit" [disabled]="!newBlogPostForm.valid">
-                    Save new post
+                <button (click)="saveEditedPost()" class="btn btn-success m-2" type="submit" [disabled]="!editBlogPostForm.valid">
+                    Save changes
                 </button>
                 <button (click)="cancel()" class="btn btn-danger m-2">
                     Cancel
