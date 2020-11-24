@@ -57,4 +57,11 @@ export class BlogsService {
     })
   }
 
+  deleteSinglePost(id:string){
+    this.blogPostRef.where("uid", "==", id).get().then((snapshots) => {
+      snapshots.forEach((doc) => doc.ref.delete())
+    })
+
+  }
+
 }

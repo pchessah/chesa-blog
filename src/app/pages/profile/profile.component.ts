@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IBlogPost } from 'src/app/libs/interfaces/iblogposts';
 import { BlogsService } from 'src/app/libs/services/blog-service/blogs.service';
@@ -21,13 +22,15 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private blogService: BlogsService) {this.blogPosts = this.blogService.getAllPosts().valueChanges()
+  constructor(private blogService: BlogsService, private router: Router)
+   {this.blogPosts = this.blogService.getAllPosts().valueChanges()
     this.blogPosts.subscribe(blogPosts => {
       this.blogPostsArray = blogPosts;
       this.dataSource = this.blogPostsArray;     
     }) }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    
   }
 
   ngAfterViewInit() {
@@ -42,6 +45,17 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource?.paginator.firstPage();
     }
+  }
+
+  
+  deleteSingleBlogPost(id){
+    if (confirm("Are you sure you want to delete this?")) {
+      this.blogService.deleteSinglePost(id)
+    } else {
+      
+    }
+
+    this.blogService.deleteSinglePost(id);
   }
 
 }
