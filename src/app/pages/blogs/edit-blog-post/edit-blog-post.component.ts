@@ -54,6 +54,7 @@ export class EditBlogPostComponent implements OnInit {
       })
 
     const data = {
+      uid: this.blogPost.uid,
       title: this.editBlogPostForm.value.title,
       content: this.editBlogPostForm.value.content,
       dateOfCreation: dateOfCreation
@@ -62,12 +63,7 @@ export class EditBlogPostComponent implements OnInit {
     this.snackBar.open(`${this.blogPost.title} changes saved`, 'Close', {
       duration: 4000,
     })
-    this.blogService.updateSinglePost(this.blogPost.uid, data);
-  
-
-    console.log(data);
-
-   
+    this.blogService.updateSinglePost( this.blogPost.uid, data); 
   }
 
   cancel(): void {

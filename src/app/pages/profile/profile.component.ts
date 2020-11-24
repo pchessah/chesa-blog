@@ -27,8 +27,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       this.dataSource = this.blogPostsArray;     
     }) }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {    
   }
 
   ngAfterViewInit() {

@@ -51,8 +51,10 @@ export class BlogsService {
   }
 
   //EDIT BLOGPOST
-  updateSinglePost(id: string, data: any){
-    return this.blogPostRef.doc(id).update(data);
+  updateSinglePost(id:string, data: any){
+    this.blogPostRef.where("uid", "==", id).get().then((snapshots) => {
+      snapshots.forEach((doc) => doc.ref.update(data))
+    })
   }
 
 }
