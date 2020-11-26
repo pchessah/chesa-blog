@@ -12,7 +12,7 @@
                 <textarea formControlName="content" [value]="blogPost?.content"></textarea>
             </div>
             <div fxLayout="row" fxLayoutAlign="space-between center">
-                <button (click)="saveEditedPost()" class="btn btn-success m-2" type="submit" [disabled]="!editBlogPostForm.valid">
+                <button (click)="saveEditedPost()" class="btn btn-success m-2" type="submit">
                     Save changes
                 </button>
                 <button (click)="cancel()" class="btn btn-danger m-2">

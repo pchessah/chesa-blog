@@ -19,14 +19,15 @@ export class EditBlogPostComponent implements OnInit {
     private blogService: BlogsService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar) {
+      this.getBlogPost();
+     }
 
   ngOnInit(): void {
     this.getBlogPost();
     this.editBlogPostForm = this.fb.group({
       title: [this.blogPost?.title, Validators.required],
       content: [this.blogPost?.content, Validators.required],
-      dateOfCreation: [""]
     })
   }
 
@@ -40,25 +41,17 @@ export class EditBlogPostComponent implements OnInit {
   }
 
   saveEditedPost(): void {
-    let currentdate = new Date();
-    const dateOfCreation = currentdate.getDate() + "/"
-      + (currentdate.getMonth() + 1) + "/"
-      + currentdate.getFullYear() + " @ "
-      + currentdate.getHours() + ":"
-      + currentdate.getMinutes() + ":"
-      + currentdate.getSeconds();
-
-      this.editBlogPostForm.patchValue({
-        title: this.editBlogPostForm.value.title,
-        content: this.editBlogPostForm.value.content,
+      this.editBlogPostForm.setValue({
+        title: this.editBlogPostForm.get("title").value,
+        content: this.editBlogPostForm.get("content").value,
       })
 
     const data = {
       uid: this.blogPost.uid,
-      title: this.editBlogPostForm.value.title,
-      content: this.editBlogPostForm.value.content,
-      dateOfCreation: dateOfCreation
+      title: this.editBlogPostForm.get("title").value,
+      content: this.editBlogPostForm.get("content").value,
     }
+    debugger;
 
     this.snackBar.open(`${this.blogPost.title} changes saved`, 'Close', {
       duration: 4000,

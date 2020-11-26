@@ -61,7 +61,13 @@ export class BlogsService {
     this.blogPostRef.where("uid", "==", id).get().then((snapshots) => {
       snapshots.forEach((doc) => doc.ref.delete())
     })
-
   }
+
+  hideloader() {   
+    // Setting display of spinner 
+    // element to none 
+    document.getElementById('loading') 
+        .style.display = 'none'; 
+} 
 
 }
